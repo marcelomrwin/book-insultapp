@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.logging.Logger;
 
 public class InsultGenerator {
 
@@ -19,8 +18,8 @@ public class InsultGenerator {
 	    String username = System.getenv("POSTGRESQL_USER");
 	    String password = System.getenv("PGPASSWORD");
 	    
-	    Logger.getGlobal().info("Try to connect to database URL ["+databaseURL+"], username = "+username+", password = "+password);
-	    
+	    System.out.println("Try to connect to database URL ["+databaseURL+"], username = "+username+", password = "+password);
+	    	    
 	    Connection connection = DriverManager.getConnection(databaseURL, username, password);
 	    if (connection != null) {
 		String SQL = "select a.string AS first, b.string AS second, c.string AS noun from short_adjective a , long_adjective b, noun c ORDER BY random() limit 1";
